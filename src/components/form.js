@@ -8,7 +8,8 @@ export default class Form extends React.Component {
 		this.state = {
 			result: [],
 			error: '',
-			name: 'All'
+			name: 'All',
+			status: ''
 		}
 	}
 
@@ -19,8 +20,9 @@ export default class Form extends React.Component {
 
 	handleChangeRank(e){
 		const int = parseInt(e.target.value);
-		const rank = Number.isNaN(int) ? 'Rank Must be number' : e.target.value;
-		this.setState({rank})
+		const status = Number.isNaN(int)
+		const rank = status ? 'Rank Must be number' : e.target.value;
+		this.setState({rank, status})
 	}
 
 	fetching(e){
@@ -40,7 +42,7 @@ export default class Form extends React.Component {
 				<form onSubmit={this.fetching}>
 					<p style={{color: "blue"}}>Search by: {this.state.name}</p>
 					<input placeholder="Name" ref="name" onChange={this.handleChangeName.bind(this)} />
-					<p style={{color: "red"}}>{this.state.rank}</p>
+					<p className={this.state.status}>{this.state.rank}</p>
 					<input placeholder="Rank" ref="rank" onChange={this.handleChangeRank.bind(this)} />
 					<div class="center">
 						<button type="submit">Fetch</button>

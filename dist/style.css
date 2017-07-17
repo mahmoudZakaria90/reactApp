@@ -12,9 +12,13 @@ body {
 }
 
 form {
-	max-width: 960px;
+	max-width: 460px;
 	margin: auto;
 	padding: 30px; 
+	background-color: lightblue;
+	margin-top: 50px;
+	border-radius: 10px;
+
 }
 
 form > * {
@@ -29,11 +33,19 @@ form > p {
 	padding: 0
 }
 
+p.true {
+	color: red;
+}
+
+p.false {
+	color: green;
+}
+
 button {
 	display: inline-block;
 	width: auto;
 	padding: 5px 10px;
-	border: 2px solid lightblue;
+	border: 2px solid lightcoral;
 	background: transparent;
 	border-radius: 4px;
 	font-size: 18px;
