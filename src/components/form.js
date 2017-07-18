@@ -28,13 +28,10 @@ export default class Form extends React.Component {
 	fetching(e){
 		e.preventDefault();
 		const { name, rank } = this.refs;
-		const ajax = new XMLHttpRequest();
-		ajax.onload = () => {
-			const result = JSON.parse(ajax.response);
-			this.setState(prevState => prevState.result.concat(result))
-		};
-		ajax.open('GET', 'http://localhost:4000/api/ninja', true);
-		ajax.send()
+		fetch(`http://localhost:4000/api/ninja?name=${name.value}&amp;rank=${rank.value}`)
+		.then(data => data.json())
+		.then(result => this.setState(prevState => prevState.result.concat({result})))
+		.catch(error => this.setState({error}));
 	}
 	render() {
 		return (
